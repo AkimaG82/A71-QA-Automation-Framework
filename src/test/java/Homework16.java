@@ -19,6 +19,7 @@ public class Homework16 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://qa.koel.app/";
+
         driver.get(url);
 
         WebElement registrationField = driver.findElement(By.cssSelector("a[href='registration']"));
