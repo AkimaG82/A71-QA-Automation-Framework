@@ -34,7 +34,7 @@ public class Homework17 extends BaseTest {
         WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
         viewAll.click();
 
-        WebElement firstSong = driver.findElement(By.cssSelector("//table[@class='items' and @data-v-3eef485a]//tr[@class='song-item playing' and @draggable='true']//td[@class='title'][text()='Episode 2']"));
+        WebElement firstSong = driver.findElement(By.xpath("//table[class='items]/tr/td[contains(text(),'Episode 2')]"));
         firstSong.click();
 
         WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
@@ -45,5 +45,10 @@ public class Homework17 extends BaseTest {
         playListName.sendKeys("First Playlist");
 
         WebElement save = driver.findElement(By.cssSelector("button[type='submit']"));
+
+        WebElement test = driver.findElement(By.cssSelector("a[class='active']"));
+        test.click();
+
+      //  Assert.assertTrue();
     }
 }
