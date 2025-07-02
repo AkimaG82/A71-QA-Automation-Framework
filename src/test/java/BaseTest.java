@@ -87,7 +87,7 @@ public class BaseTest {
     }
 
     public void searchBox(String song) {
-        WebElement search = driver.findElement(By.cssSelector("input[type='search']");
+        WebElement search = driver.findElement(By.cssSelector("input[type='search']"));
         search.clear();
         search.sendKeys(song);
     }

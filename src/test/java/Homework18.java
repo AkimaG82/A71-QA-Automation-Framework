@@ -1,2 +1,2 @@
-public class Homework18 {
+public class Homework18 extends BaseTest{
 }
