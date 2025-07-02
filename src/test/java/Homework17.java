@@ -15,10 +15,10 @@ public class Homework17 extends BaseTest {
         clickSubmit();
         Thread.sleep(2000);
 
-        searchBox("Episode 2");
+        searchSong("Episode 2");
         clickSubmit();
 
-        veiwAllButton();
+        clickVeiwAllBtn();
         clickFirstSong();
         clickAddTo();
 

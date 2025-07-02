@@ -86,15 +86,17 @@ public class BaseTest {
         saveButton.click();
     }
 
-    public void searchBox(String song) {
-        WebElement search = driver.findElement(By.cssSelector("input[type='search']");
+    public void searchSong(String song) throws InterruptedException {
+        WebElement search = driver.findElement(By.cssSelector("input[type='search']"));
         search.clear();
         search.sendKeys(song);
+        Thread.sleep(2000);
     }
 
-    public void veiwAllButton() {
-        WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+    public void clickVeiwAllBtn() throws InterruptedException {
+        WebElement viewAll = driver.findElement(By.cssSelector("input[type='search']"));
         viewAll.click();
+        Thread.sleep(2000);
     }
 
     public void clickFirstSong() {
