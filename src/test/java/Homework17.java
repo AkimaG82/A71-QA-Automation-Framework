@@ -46,7 +46,7 @@ public class Homework17 extends BaseTest {
         viewAll.click();
     }
     public void clickFirstSong() {
-        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),\" 2'')]"));
+        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),'Episode 2')]"));
         firstSong.click();
     }
     public void clickAddTo() {
