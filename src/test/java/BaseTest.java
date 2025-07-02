@@ -85,4 +85,36 @@ public class BaseTest {
         WebElement saveButton = driver.findElement(By.cssSelector("button.btn-submit"));
         saveButton.click();
     }
+
+    public void searchBox(String song) {
+        WebElement search = driver.findElement(By.cssSelector("input[type='search']");
+        search.clear();
+        search.sendKeys(song);
+    }
+
+    public void veiwAllButton() {
+        WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+        viewAll.click();
+    }
+
+    public void clickFirstSong() {
+        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),'Episode 2')]"));
+        firstSong.click();
+    }
+
+    public void clickAddTo() {
+        WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
+        addTo.click();
+    }
+
+    public void createNewPlaylist(String name) {
+        WebElement playListName = driver.findElement(By.cssSelector("//section[@id='songsWrapper']//input[@required='required']"));
+        playListName.click();
+        playListName.sendKeys(name);
+    }
+
+    public void newPlaylistSaveBtn() {
+        WebElement save = driver.findElement(By.cssSelector("//section[@id='songResultsWrapper']//button[@title='Save']"));
+        save.click();
+    }
 }

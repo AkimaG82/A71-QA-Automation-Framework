@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-    @Test(enabled = true, description = "this is paused until issue fixed")
+    @Test
     public void loginValidEmail() throws InterruptedException {
 
         navigateUrl();
