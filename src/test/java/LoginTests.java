@@ -10,31 +10,33 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
 
-
     @Test
-    public void loginValidEmail(){
+    public void loginValidEmail() throws InterruptedException {
+        //Allows for remote connections from intelliJ to chrome without interruptions, while options opend chrome with the specified settings
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-    //Opening a browser
-        WebDriver driver = new ChromeDriver(options);
+        options.addArguments("--remote-allow-originis=*");
 
-        String Url = "https://qa.koel.app/";
+        //Open's browser while passings options as the settings for the webdriver
+        WebDriver driver = new ChromeDriver(options);
+        String url = "https://qa.koel.app/";
 
         //Steps
-        //Step 1: Navigate to Koels app
-        driver.get(Url);
-        //Step 2: Enter username
+        //Step1: navigate to Koel app
+        driver.get(url);
+        //Step2: Enter username
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.sendKeys("akima.gordon@testpro.io");
-        //Step 3: enter password
+        //Step3: Enter password
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.sendKeys("BabyboiAz1!");
-        //Step 4: click on submit
-        WebElement submitButton = driver.findElement(By.cssSelector("butto[type='submit']"));
+        //Step4: click submit buton
+        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
         submitButton.click();
-        //Step 5: Verify user logged in
-        WebElement avatar = driver.findElement(By.cssSelector("img[class='avatar']"));
-        Assert.assertTrue(avatar.isDisplayed());
-
+        Thread.sleep(2000);
+        //Step5:Verify if user is logged in
+        WebElement userAvatar = driver.findElement(By.cssSelector("img[class='avatar']"));
+        Assert.assertTrue(userAvatar.isDisplayed());
+        //closing browser
+        driver.quit();
     }
 }
