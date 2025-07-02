@@ -10,39 +10,24 @@ import java.time.Duration;
 
 public class Homework17 extends BaseTest {
     @Test
-    public void addSongToPlayList() {
+    public void addSongToPlayList() throws InterruptedException {
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+        navigateUrl();
 
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.click();
-        emailField.sendKeys("akima.gordon@testpro.io");
+        provideEmail("akima.gordon@testpro.io");
+        providePassword("BabyboiAz1!");
+        clickSubmit();
+        Thread.sleep(2000);
 
-        WebElement PasswordField = driver.findElement(By.cssSelector("input[type='password']"));
-        PasswordField.click();
-        PasswordField.sendKeys("BabyboiAz1!");
+        searchBox("Episode 2");
+        clickSubmit();
 
-        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitButton.click();
+        veiwAllButton();
+        clickFirstSong();
 
-        WebElement search = driver.findElement(By.cssSelector("input[type='search']"));
-        Assert.assertTrue(search.isDisplayed());
-        search.click();
-        search.sendKeys("Episode 2");
+        clickAddTo();
 
-        WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
-        viewAll.click();
 
-        WebElement firstSong = driver.findElement(By.xpath("//table[class='items]/tr/td[contains(text(),'Episode 2')]"));
-        firstSong.click();
-
-        WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
-        addTo.click();
-
-        WebElement playListName = driver.findElement(By.cssSelector("input[required='required']"));
-        playListName.click();
-        playListName.sendKeys("First Playlist");
 
         WebElement save = driver.findElement(By.cssSelector("button[type='submit']"));
 
@@ -50,5 +35,27 @@ public class Homework17 extends BaseTest {
         test.click();
 
       //  Assert.assertTrue();
+    }
+    public void searchBox(String song) {
+        WebElement search = driver.findElement(By.cssSelector("input[type='search']");
+        search.clear();
+        search.sendKeys(song);
+    }
+    public void veiwAllButton() {
+        WebElement viewAll = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
+        viewAll.click();
+    }
+    public void clickFirstSong() {
+        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),\" 2'')]"));
+        firstSong.click();
+    }
+    public void clickAddTo() {
+        WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
+        addTo.click();
+    }
+    public void createNewPlaylist() {
+        WebElement playListName = driver.findElement(By.cssSelector("//section[@id='songsWrapper']//input[@required='required']"));
+        playListName.click();
+        playListName.sendKeys("First Playlist");
     }
 }
