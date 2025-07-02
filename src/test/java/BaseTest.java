@@ -94,29 +94,31 @@ public class BaseTest {
     }
 
     public void clickVeiwAllBtn() throws InterruptedException {
-        WebElement viewAll = driver.findElement(By.cssSelector("input[type='search']"));
+        WebElement viewAll = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
         viewAll.click();
         Thread.sleep(2000);
     }
 
-    public void clickFirstSong() {
+    public void clickFirstSong() throws InterruptedException {
         WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),'Episode 2')]"));
         firstSong.click();
+        Thread.sleep(2000);
     }
 
-    public void clickAddTo() {
+    public void clickAddTo() throws InterruptedException {
         WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
         addTo.click();
+        Thread.sleep(2000);
     }
 
-    public void createNewPlaylist(String name) {
-        WebElement playListName = driver.findElement(By.cssSelector("//section[@id='songsWrapper']//input[@required='required']"));
+    public void selectPlaylist(String name) throws InterruptedException {
+        WebElement playListName = driver.findElement(By.xpath("//section[@id='playlistWrapper']//li[last()-1]"));
         playListName.click();
         playListName.sendKeys(name);
+        Thread.sleep(2000);
     }
-
-    public void newPlaylistSaveBtn() {
-        WebElement save = driver.findElement(By.cssSelector("//section[@id='songResultsWrapper']//button[@title='Save']"));
-        save.click();
+    public String getAddToPlayListSuccessmsg(){
+        WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
+        return notification.getText();
     }
 }

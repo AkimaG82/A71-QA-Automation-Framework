@@ -6,7 +6,7 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlayList() throws InterruptedException {
 
-        String expectedSongaddedMessage = "Created Playlist \"Test\"";
+        String expectedSongaddedMessage = "Added 1 song into \"Test.\"";
 
         navigateUrl();
 
@@ -22,10 +22,10 @@ public class Homework17 extends BaseTest {
         clickFirstSong();
         clickAddTo();
 
-        createNewPlaylist("Test");
-        newPlaylistSaveBtn();
+        selectPlaylist("Test");
 
-        Assert.assertEquals("Created Playlist \'Test\'");
+
+        Assert.assertEquals(getAddToPlayListSuccessmsg(), expectedSongaddedMessage);
 
 
     }
