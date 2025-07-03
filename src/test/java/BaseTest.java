@@ -5,17 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.UUID;
 
 public class BaseTest {
     public WebDriver driver = null;
-    String url = "https://qa.koel.app/";
+    String url = null;
 
 
     @BeforeSuite
@@ -24,13 +21,16 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void initiateBrowser(){
+    @Parameters({"BaseURL"})
+    public void initiateBrowser(String baseURL){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();//maximizes chrome window
+        url = baseURL;
+        navigateToPage();
     }
 
     @AfterMethod
@@ -38,7 +38,7 @@ public class BaseTest {
         driver.quit();
     }
     //The medthods listed below are known as helper methods
-    public void navigateUrl(){
+    public void navigateToPage(){
         driver.get(url);
     }
 
@@ -98,11 +98,6 @@ public class BaseTest {
         viewAll.click();
     }
 
-    public void clickFirstSong() {
-        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//td[contains(text(),'Episode 2')]"));
-        firstSong.click();
-    }
-
     public void clickAddTo() {
         WebElement addTo = driver.findElement(By.cssSelector("button.btn-add-to"));
         addTo.click();
@@ -118,31 +113,19 @@ public class BaseTest {
         WebElement save = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@title='Save']"));
         save.click();
     }
-    public void clickAlltSong() throws InterruptedException {
-        WebElement allSongs = driver.findElement(By.cssSelector("a.songs.active"));
-        allSongs.click();
-        Thread.sleep(2000);
-    }
-    public void playFirstSong() throws InterruptedException {
-        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songsWrapper']//td[@class='title']"));
-        firstSong.click();
-        Thread.sleep(2000);
-    }
-    public void playNextSong() throws InterruptedException {
-        WebElement nextSong = driver.findElement(By.cssSelector("i[title='Play next song]"));
-        nextSong.click();
-        Thread.sleep(2000);
-    }
 
-    public void clickPlayButton() throws InterruptedException {
-        WebElement playButton = driver.findElement(By.xpath("//span[@role='button']//i[@class='fa fa-bars']"));
+
+    public void clickPlay() throws InterruptedException {
+        WebElement playNextButton = driver.findElement(By.xpath("//si[@data-testid=]'play-next-btn'"));
+        WebElement playButton = driver.findElement(By.xpath("span[@data-testid=]'play-btn'"));
+
+        playNextButton.click();
         playButton.click();
-        Thread.sleep(2000);
     }
 
-    public void validateMusicIsPlaying() throws InterruptedException {
-        WebElement pauseButton = driver. findElement(By.xpath("//span[@role='button']//i[@class='fa fa-pause']"));
-        Thread.sleep(2000);
-        Assert.assertTrue(pauseButton.isDisplayed());
+    public boolean songIsPlaying() throws InterruptedException {
+        WebElement soundBar = driver. findElement(By.xpath("//div[@data-testid='sound-bar-play']"));
+        return soundBar.isDisplayed();
     }
+
 }
