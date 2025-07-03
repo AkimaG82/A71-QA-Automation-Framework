@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -116,5 +117,23 @@ public class BaseTest {
     public void newPlaylistSaveBtn() {
         WebElement save = driver.findElement(By.cssSelector("//section[@id='songResultsWrapper']//button[@title='Save']"));
         save.click();
+    }
+
+    public void playNextSong() throws InterruptedException {
+        WebElement nextSong = driver.findElement(By.cssSelector("i[title='Play next song]"));
+        nextSong.click();
+        Thread.sleep(2000);
+    }
+
+    public void clickPlayButton() throws InterruptedException {
+        WebElement playButton = driver.findElement(By.xpath("//span[@role='button']//i[@class='fa fa-bars']"));
+        playButton.click();
+        Thread.sleep(2000);
+    }
+
+    public void validateMusicIsPlaying() throws InterruptedException {
+        WebElement pauseButton = driver. findElement(By.xpath("//span[@role='button']//i[@class='fa fa-pause']"));
+        Thread.sleep(2000);
+        Assert.assertTrue(pauseButton.isDisplayed());
     }
 }
