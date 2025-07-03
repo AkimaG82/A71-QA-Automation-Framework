@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 public class ProfileTest extends BaseTest{
     @Test
     public void changeProfileName() throws InterruptedException{
-        navigateUrl();
+        navigateToPage();
 
         provideEmail("akima.gordon@testpro.io");
         providePassword("BabyboiAz1!");

@@ -8,7 +8,7 @@ public class LoginTests extends BaseTest {
     @Test(enabled = true, priority = 0, description = "Login with invalid email and valid password")
     public void loginValidEmail() throws InterruptedException {
 
-        navigateUrl();
+        navigateToPage();
         provideEmail("akima.gordon@testpro.io");
         providePassword("BabyboiAz1!");
         clickSubmit();
@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
 
     @Test(enabled = true, priority = 1, description = "Login with valid email and valid password")
     public void loginInvalidEmailPassword() throws InterruptedException {
-        navigateUrl();
+        navigateToPage();
         provideEmail("incorrect@testpro.io");
         providePassword("BabyboiAz1!");
         clickSubmit();
@@ -38,7 +38,7 @@ public class LoginTests extends BaseTest {
 
     @Test(enabled = true, priority = 3, description = "Login with valid email and empty password")
     public void loginValidEmailEmptyPassword() throws InterruptedException {
-        navigateUrl();
+        navigateToPage();
         provideEmail("akima.gordon@testpro.io");
         providePassword("");
         clickSubmit();
