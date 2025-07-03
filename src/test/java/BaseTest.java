@@ -128,4 +128,19 @@ public class BaseTest {
         return soundBar.isDisplayed();
     }
 
+    public void openPlaylist() {
+        WebElement emptyPlaylist = driver.findElement(By.cssSelector("a[href='#!/playlist/105043']"));
+        emptyPlaylist.click();
+    }
+
+    public void clickDeletePlaylistBtn() throws InterruptedException {
+        WebElement deletePlaylist = driver.findElement(By.cssSelector(".btn-delete-playlist"));
+        deletePlaylist.click();
+        Thread.sleep(2000);
+    }
+
+    public String getDeletedPlaylistMsg(){
+        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
+        return notificationMsg.getText();
+    }
 }
