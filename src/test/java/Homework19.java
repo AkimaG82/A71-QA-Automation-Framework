@@ -14,14 +14,19 @@ import static org.bouncycastle.cms.RecipientId.password;
 
 public class Homework19 extends BaseTest {
 
-    public void deletePlaylist() {
+    public void deletePlaylist() throws InterruptedException{
+        String expectedPlaylistDeleteMessage = "Deleted playlist \"Test Playlist."\";
 
-        @Test(dataProvider = "deletePlaylist", dataProviderClass = TestDataProvider.class)
-        public void negativeTesting (String email, String password) throws InterruptedException {
-            provideEmail(email);
-            providePassword(password);
-            clickSubmit();
-            Thread.sleep(2000);
-        }
+        provideEmail("akima.gordon@testpro.io");
+        providePassword("BabyboiaAz1!");
+        clickSubmit();
+
+        openPlaylist();
+        clickDeletePlaylist();
+
+    }
+
+    public void openPlaylist() {
+        WebElement emptyPlaylist = driver.findElement(By.);
     }
 }
