@@ -10,6 +10,7 @@ public class Homework18 extends BaseTest{
         providePassword("BabyboiAz1!");
         clickSubmit();
 
+        playFirstSong();
         playNextSong();
         clickPlayButton();
 

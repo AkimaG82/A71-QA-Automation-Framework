@@ -109,16 +109,25 @@ public class BaseTest {
     }
 
     public void createNewPlaylist(String name) {
-        WebElement playListName = driver.findElement(By.cssSelector("//section[@id='songsWrapper']//input[@required='required']"));
+        WebElement playListName = driver.findElement(By.xpath("//section[@id='songsWrapper']//input[@required='required']"));
         playListName.click();
         playListName.sendKeys(name);
     }
 
     public void newPlaylistSaveBtn() {
-        WebElement save = driver.findElement(By.cssSelector("//section[@id='songResultsWrapper']//button[@title='Save']"));
+        WebElement save = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//button[@title='Save']"));
         save.click();
     }
-
+    public void clickAlltSong() throws InterruptedException {
+        WebElement allSongs = driver.findElement(By.cssSelector("a.songs.active"));
+        allSongs.click();
+        Thread.sleep(2000);
+    }
+    public void playFirstSong() throws InterruptedException {
+        WebElement firstSong = driver.findElement(By.xpath("//section[@id='songsWrapper']//td[@class='title']"));
+        firstSong.click();
+        Thread.sleep(2000);
+    }
     public void playNextSong() throws InterruptedException {
         WebElement nextSong = driver.findElement(By.cssSelector("i[title='Play next song]"));
         nextSong.click();
