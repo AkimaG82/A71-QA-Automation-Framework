@@ -13,7 +13,6 @@ public class LoginTest extends BaseTest {
         provideEmail("akima.gordon@testpro.io");
         providePassword("BabyboiAz1!");
         clickSubmit();
-        Thread.sleep(2000);
 
 
 
@@ -29,7 +28,6 @@ public class LoginTest extends BaseTest {
         provideEmail("incorrect@testpro.io");
         providePassword("BabyboiAz1!");
         clickSubmit();
-        Thread.sleep(2000);
 
 
         WebElement userAvatar = driver.findElement(By.cssSelector("img[class='avatar']"));
@@ -43,7 +41,6 @@ public class LoginTest extends BaseTest {
         provideEmail("akima.gordon@testpro.io");
         providePassword("");
         clickSubmit();
-        Thread.sleep(2000);
 
 
         WebElement userAvatar = driver.findElement(By.cssSelector("img[class='avatar']"));
@@ -55,7 +52,6 @@ public class LoginTest extends BaseTest {
         provideEmail(email);
         providePassword(password);
         clickSubmit();
-        Thread.sleep(2000);
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }

@@ -14,13 +14,11 @@ public class ProfileTest extends BaseTest{
         clickSubmit();
 
         String randomName = randomName();
-        Thread.sleep(2000);
 
         clickAvatarIcon();
         provideCurrentPassword("BabyboiAz1!");
         provideProfileName(randomName);
         saveButton();
-        Thread.sleep(2000);
 
        wait.until(
                 ExpectedConditions.textToBe(By.cssSelector("span[class='name']"), randomName));
