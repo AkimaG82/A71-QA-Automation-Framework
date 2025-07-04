@@ -13,11 +13,5 @@ public class TestDataProvider extends BaseTest {
                 {"", ""}
         };
     }
-    @DataProvider(name="deletePlaylist")
-    public static Object[][]positiveTestingData(){
-        return new Object[][]{
-                {"akima.gordon@testpro.io", "BabyboiAz1!"}
-        };
-    }
 }
 

@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,8 +22,11 @@ public class ProfileTest extends BaseTest{
         saveButton();
         Thread.sleep(2000);
 
-        WebElement actualProfileName = driver.findElement(By.cssSelector("span[class='name']"));
-        Assert.assertEquals(actualProfileName.getText(), randomName);
+       wait.until(
+                ExpectedConditions.textToBe(By.cssSelector("span[class='name']"), randomName));
+        WebElement actualProfileName = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span[class='name']")));
+      // Assert.assertEquals(actualProfileName.getText(), randomName);
     }
 
 }
