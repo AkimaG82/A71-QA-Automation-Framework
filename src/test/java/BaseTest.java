@@ -135,10 +135,8 @@ public class BaseTest {
     public void clickPlay(){
         WebElement playNextButton = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.xpath("//si[@data-testid=]'play-next-btn'")));
-        WebElement playButton = driver.findElement(By.xpath("span[@data-testid=]'play-btn'")));
-
         playNextButton.click();
-        playButton.click();
+        playNextButton.click();
     }
 
     public boolean songIsPlaying(){
