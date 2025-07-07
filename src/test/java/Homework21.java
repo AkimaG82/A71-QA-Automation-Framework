@@ -1,6 +1,19 @@
-public class Homework21 extends BaseTest {
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-public void renamePlaylist(){
-    
-}
+public class Homework21 extends BaseTest {
+    @Test
+    public void deletePlaylist() throws InterruptedException{
+        String expectedPlaylistDeleteMessage = "Deleted playlist \"Test.\"";
+
+        provideEmail("akima.gordon@testpro.io");
+        providePassword("BabyboiAz1!");
+        clickSubmit();
+
+        openPlaylist("Test");
+        clickDeletePlaylistBtn();
+        Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeleteMessage);
+
+    }
+
 }
