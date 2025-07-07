@@ -19,7 +19,7 @@ public class BaseTest {
 
 
     @BeforeSuite
-    static void setupClass() {
+    public static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -134,9 +134,13 @@ public class BaseTest {
 
     public void clickPlay(){
         WebElement playNextButton = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath("//si[@data-testid=]'play-next-btn'")));
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//si[@data-testid='play-next-btn']")));
+        WebElement playButton = driver.findElement(By.xpath("//span[@data-testid='play-btn']"));
+
+
+
         playNextButton.click();
-        playNextButton.click();
+        playButton.click();
     }
 
     public boolean songIsPlaying(){
@@ -145,16 +149,17 @@ public class BaseTest {
         return soundBar.isDisplayed();
     }
 
-    public void openPlaylist() {
+    public void openPlaylist(String playlistName) {
         WebElement emptyPlaylist = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a[href='#!/playlist/105043']")));
+                ExpectedConditions.visibilityOfElementLocated( By.xpath("//section[@id='playlists']//a[contains(text(), '" + playlistName + "')]")));
         emptyPlaylist.click();
     }
 
     public void clickDeletePlaylistBtn(){
         WebElement deletePlaylist = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-delete-playlist")));
+                ExpectedConditions.visibilityOfElementLocated(By.cssSelector("i.fa.fa-times")));//.btn-delete-playlist
         deletePlaylist.click();
+
     }
 
     public String getDeletedPlaylistMsg(){
