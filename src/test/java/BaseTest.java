@@ -13,9 +13,9 @@ import java.time.Duration;
 import java.util.UUID;
 
 public class BaseTest {
-    public WebDriver driver = null;
-    public String url = null;
-    WebDriverWait wait;
+    public static WebDriver driver = null;
+    public static String url = null;
+    public static WebDriverWait wait;
 
 
     @BeforeSuite
