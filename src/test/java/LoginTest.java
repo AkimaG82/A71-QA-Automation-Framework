@@ -16,11 +16,11 @@ public class LoginTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
 
-        loginPage.provideEmail("incorrect@testpro.io");
-        loginPage.providePassword("BabyboiAz1!");
-        loginPage.clickSubmit();
+//        loginPage.provideEmail("incorrect@testpro.io");
+//        loginPage.providePassword("BabyboiAz1!");
+//        loginPage.clickSubmit();
 
-
+        loginPage.login();
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
 }
